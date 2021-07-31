@@ -11,7 +11,9 @@ pillow = "*"
 django-storages = "*"
 boto3 = "*"
 psycopg2-binary = "*"
-awsebcli = "*"
 
 [requires]
 python_version = "3.7"
+
+[dev-packages]
+awsebcli = "*"
