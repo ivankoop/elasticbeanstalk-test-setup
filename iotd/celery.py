@@ -1,11 +1,12 @@
 import os
 
 from celery import Celery
+from .settings import BROKER_URL
 
 # Set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'iotd.settings')
 
-app = Celery('iotd')
+app = Celery('iotd', broker=BROKER_URL)
 
 # Using a string here means the worker doesn't have to serialize
 # the configuration object to child processes.
