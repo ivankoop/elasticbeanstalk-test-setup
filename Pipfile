@@ -11,6 +11,8 @@ pillow = "*"
 django-storages = "*"
 boto3 = "*"
 psycopg2-binary = "*"
+django-celery-results = "*"
+celery = "*"
 
 [requires]
 python_version = "3.7"

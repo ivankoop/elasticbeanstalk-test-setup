@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'django_celery_results',
 
     # 'storages',
 
@@ -91,9 +92,10 @@ WSGI_APPLICATION = 'iotd.wsgi.application'
 #     }
 # }
 
-print("YEAAAAAAAAAAAA", os.environ['RDS_USERNAME'], os.environ['RDS_PASSWORD'])
+
 
 if 'RDS_DB_NAME' in os.environ:
+    print("YEAAAAAAAAAAAA", os.environ['RDS_USERNAME'], os.environ['RDS_PASSWORD'])
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -104,17 +106,20 @@ if 'RDS_DB_NAME' in os.environ:
             'PORT': os.environ['RDS_PORT'],
         }
     }
-# else:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#             'NAME': 'timecard',
-#             'USER': 'timecard',
-#             'PASSWORD': 'timecard',
-#             'HOST': 'localhost',
-#             'PORT': '5432',
-#         }
-#     }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
+
+# Celery Configuration Options
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+CELERY_RESULT_BACKEND = 'django-cache'
+CELERY_CACHE_BACKEND = 'default'
 
 
 # Password validation
