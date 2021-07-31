@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 
 from pathlib import Path
+from datetime import timedelta
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,11 +136,19 @@ if 'AWS_ACCESS_KEY_ID' in os.environ:
     AWS_S3_REGION_NAME = os.environ['AWS_S3_REGION_NAME']
 
 # Celery Configuration Options
-BROKER_URL = f"redis://{os.environ['REDIS_CLUSTER_ADDRESS']}:6379/0"
+BROKER_URL = f"redis://{os.environ['REDIS_CLUSTER_ADDRESS']}:{os.environ['REDIS_CLUSTER_PORT']}/0"
 CELERY_RESULT_BACKEND = "django-db"
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
+
+CELERYBEAT_SCHEDULE = {
+    "test-beat": {
+        "task": "iotd.tasks.add",
+        "schedule": timedelta(seconds=10),
+        "options": {"expires": timedelta(seconds=30).seconds},
+    },
+}
 
 
 # Password validation
