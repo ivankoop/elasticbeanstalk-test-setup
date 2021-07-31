@@ -12,8 +12,9 @@ django-storages = "*"
 boto3 = "*"
 psycopg2-binary = "*"
 django-celery-results = "*"
-celery = "*"
+celery = {extras = ["redis"], version = "*"}
 requests = "*"
+install = "*"
 
 [requires]
 python_version = "3.7"
