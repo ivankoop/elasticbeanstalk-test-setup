@@ -144,7 +144,7 @@ CELERY_RESULT_SERIALIZER = "json"
 
 CELERYBEAT_SCHEDULE = {
     "test-beat": {
-        "task": "iotd.tasks.add",
+        "task": "iotd.tasks.test",
         "schedule": timedelta(seconds=10),
         "options": {"expires": timedelta(seconds=30).seconds},
     },
