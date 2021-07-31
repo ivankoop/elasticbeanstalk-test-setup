@@ -13,6 +13,7 @@ boto3 = "*"
 psycopg2-binary = "*"
 django-celery-results = "*"
 celery = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"
