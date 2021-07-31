@@ -135,7 +135,8 @@ if 'AWS_ACCESS_KEY_ID' in os.environ:
 
 # Celery Configuration Options
 BROKER_URL = "redis://"
-CELERY_REDIS_HOST= "aws-my-1npgbj51ycz7h.ponlyf.0001.usw2.cache.amazonaws.com"
+BROKER_TRANSPORT = 'redis'
+CELERY_BROKER_URL = 'redis://aws-my-1npgbj51ycz7h.ponlyf.0001.usw2.cache.amazonaws.com:6379/0'
 CELERY_RESULT_BACKEND = "django-db"
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
