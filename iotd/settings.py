@@ -134,6 +134,7 @@ if 'AWS_ACCESS_KEY_ID' in os.environ:
     AWS_S3_REGION_NAME = os.environ['AWS_S3_REGION_NAME']
 
 # Celery Configuration Options
+CELERY_BROKER_URL = 'redis:aws-my-1npgbj51ycz7h.ponlyf.0001.usw2.cache.amazonaws.com:6379/0'
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_RESULT_BACKEND = 'django-cache'
