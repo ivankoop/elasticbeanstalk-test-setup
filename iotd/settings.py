@@ -93,6 +93,7 @@ WSGI_APPLICATION = 'iotd.wsgi.application'
 # }
 
 
+print("test", os.environ)
 
 if 'RDS_DB_NAME' in os.environ:
     print("YEAAAAAAAAAAAA", os.environ['RDS_USERNAME'], os.environ['RDS_PASSWORD'])
