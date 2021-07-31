@@ -134,11 +134,11 @@ if 'AWS_ACCESS_KEY_ID' in os.environ:
     AWS_S3_REGION_NAME = os.environ['AWS_S3_REGION_NAME']
 
 # Celery Configuration Options
-BROKER_URL = "redis:aws-my-1npgbj51ycz7h.ponlyf.0001.usw2.cache.amazonaws.com:6379/0"
-CELERY_TASK_TRACK_STARTED = True
-CELERY_TASK_TIME_LIMIT = 30 * 60
-CELERY_RESULT_BACKEND = 'django-cache'
-CELERY_CACHE_BACKEND = 'default'
+BROKER_URL = "redis://:aws-my-1npgbj51ycz7h.ponlyf.0001.usw2.cache.amazonaws.com:6379/0"
+CELERY_RESULT_BACKEND = "django-db"
+CELERY_ACCEPT_CONTENT = ["application/json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
 
 
 # Password validation
