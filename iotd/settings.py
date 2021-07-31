@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
+    'iotd-dev.us-west-2.elasticbeanstalk.com'
     # 'your_beanstalk_cname_here'
 ]
 
